@@ -5,19 +5,19 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h4>
+        <h1>
           Awesome<span>logo</span>
-        </h4>
+        </h1>
         <div className={styles.navMenu}>
           <ul>
             <li>
-              <Link to="/">Main</Link>
-            </li>
-            <li>
-              <Link to="/formregister">Registration</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/formaccount">Account</Link>
+            </li>
+            <li>
+              <Link to="/formregister">Registration</Link>
             </li>
           </ul>
         </div>
