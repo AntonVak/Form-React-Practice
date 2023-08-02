@@ -14,6 +14,8 @@ const HookForm = () => {
     },
   });
   const onSubmit = (data) => console.log(data);
+  const regexp =
+    /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
 
   return (
     <FormWrap>
@@ -21,7 +23,7 @@ const HookForm = () => {
         <FieldDiv>
           <Input
             {...register("firstName", {
-              onblur: true,
+              minLength: 3,
               required: {
                 value: true,
                 message: "FirstName is required",
@@ -33,9 +35,16 @@ const HookForm = () => {
         </FieldDiv>
 
         <FieldDiv>
-          <Input {...register("email")} />
+          <Input
+            {...register("email", {
+              pattern: {
+                value: regexp,
+                message: "Invalid Email format",
+              },
+            })}
+          />
           <Label>E-mail</Label>
-          <p>{errors.email?.message}</p>
+          <Pstyle>{errors.email?.message}</Pstyle>
         </FieldDiv>
         <input type="submit" />
       </form>
