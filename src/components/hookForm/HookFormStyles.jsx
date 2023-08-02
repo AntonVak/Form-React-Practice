@@ -40,6 +40,11 @@ pointer-events: none;
 transform: translateY(1rem);
 /* transition: border 150ms cubic-bezier(0.4, 1, 0.2, 1); */
 `;
+export const Pstyle = styled.p`
+color: red;
+margin-top: .5rem;
+
+`;
 
 
 

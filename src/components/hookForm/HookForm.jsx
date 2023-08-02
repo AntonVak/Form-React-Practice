@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import FormWrap from "../UI/FormWrap";
-import { FieldDiv, Input, Label } from "./HookFormStyles";
+import { FieldDiv, Input, Label, Pstyle } from "./HookFormStyles";
 
 const HookForm = () => {
   const {
@@ -19,15 +19,22 @@ const HookForm = () => {
     <FormWrap>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FieldDiv>
-        
-          <Input {...register("firstName", { onblur: true })} />
-          <Label >label</Label>
-          <p>{errors.firstName?.message}</p>
+          <Input
+            {...register("firstName", {
+              onblur: true,
+              required: {
+                value: true,
+                message: "FirstName is required",
+              },
+            })}
+          />
+          <Label htmlFor="firstName">First Name </Label>
+          <Pstyle>{errors.firstName?.message}</Pstyle>
         </FieldDiv>
 
         <FieldDiv>
           <Input {...register("email")} />
-          <Label >label</Label>
+          <Label>E-mail</Label>
           <p>{errors.email?.message}</p>
         </FieldDiv>
         <input type="submit" />
