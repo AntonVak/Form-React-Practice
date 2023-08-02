@@ -6,8 +6,10 @@ export const FormWrapper = styled.div`
   border-radius: 15px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: fit-content;
+  margin: 2rem;
 `;
 
 export const WrapCardMeal = styled(FormWrapper)`

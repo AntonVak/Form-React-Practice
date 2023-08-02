@@ -94,6 +94,8 @@ export const GlobalStyles = () => {
 export const Container = styled.div`
   width: min(100% - 4rem, 75rem);
   margin-inline: auto;
+  display: flex;
+  justify-content: center;
 
 
   /* @media screen and (max-width: 768px) {

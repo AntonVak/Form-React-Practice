@@ -11,7 +11,7 @@ const Header = () => {
         <div className={styles.navMenu}>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">HookForm</Link>
             </li>
             <li>
               <Link to="/formaccount">Account</Link>
