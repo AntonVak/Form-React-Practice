@@ -1,17 +1,15 @@
 import { useController } from "react-hook-form";
-import { FieldDiv, Input, Label } from "./TextFieldStyles";
+import { FieldDiv, Input, Label, P } from "./TextFieldStyles";
 
 const TextField = ({ label, name, control, ...restProps }) => {
   const {
     field: { ref, onBlur, onChange, ...inputProps },
-    fieldState: { invalid, error, isTouched },
-    formState: { touchedFields, dirtyFields },
+    fieldState: { invalid, error },
   } = useController({
     name,
     control,
-    
-    
   });
+
   return (
     <FieldDiv>
       <Input
@@ -23,7 +21,10 @@ const TextField = ({ label, name, control, ...restProps }) => {
         {...restProps}
       />
       <Label>{label}</Label>
-      {invalid && <span>{error?.message}</span>}
+      {invalid && <P>{error?.message}</P>}
+      {inputProps.value === "" && <span>This is empty</span>}
+      {error && error.type === "required" && <span>This is required</span>}
+      
     </FieldDiv>
   );
 };

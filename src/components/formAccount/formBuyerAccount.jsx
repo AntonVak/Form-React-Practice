@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
+import { Pstyle } from "../hookForm/HookFormStyles";
 
 const FormBuyerAccount = () => {
   const {
@@ -28,10 +29,10 @@ const FormBuyerAccount = () => {
       <h3 className="mb-4">Login</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField control={control} name="firstName" label="First Name" />
-        <p>{errors.firstName?.message}</p>
+        {/* <Pstyle>{errors.firstName?.message}</Pstyle> */}
 
         <TextField control={control} name="lastName" label="Last Name" />
-        <p>{errors.lastName?.message}</p>
+        {/* <p>{errors.lastName?.message}</p> */}
 
         {/* <TextField label="Email" {...register("email")} />
 

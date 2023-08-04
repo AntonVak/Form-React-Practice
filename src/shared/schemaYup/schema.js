@@ -2,10 +2,10 @@ import * as yup from "yup";
 
 export const schema = yup
   .object({
-    firstName: yup.string().required("FirstName is required").min(3, "min 3 characters"),
+    firstName: yup.string().required("First Name is required").min(3, "min 3 characters"),
     lastName: yup
       .string()
-      .required("LastName is required")
+      .required("Last Name is required")
       .min(4, "min 4 characters" )
       .max(16, "max 16 characters")
       .matches("password is not valid")

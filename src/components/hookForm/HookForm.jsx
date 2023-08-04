@@ -20,7 +20,7 @@ const HookForm = () => {
     reset();
   };
   const regexp = /^\S+@\S+\.\S+$/g;
-
+  // pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
   return (
     <FormWrap>
       <form onSubmit={handleSubmit(onSubmit)}>
