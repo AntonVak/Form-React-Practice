@@ -7,6 +7,7 @@ import { schema } from "../../shared/schemaYup/schema";
 const FormBuyerAccount = () => {
   const {
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm({
@@ -14,9 +15,13 @@ const FormBuyerAccount = () => {
       firstName: "",
       lastName: "",
     },
+    mode: 'onTouched',
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <FormWrap className="a">

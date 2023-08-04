@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import FormWrap from "../UI/FormWrap";
 import { FieldDiv, Input, Label, Pstyle } from "./HookFormStyles";
 
@@ -6,16 +6,20 @@ const HookForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, touchedFields, dirtyFields, isDirty, isValid },
   } = useForm({
     defaultValues: {
       firstName: "",
       email: "",
     },
+    mode: 'onTouched',
   });
-  const onSubmit = (data) => console.log(data);
-  const regexp =
-    /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+  const regexp = /^\S+@\S+\.\S+$/g;
 
   return (
     <FormWrap>
@@ -23,11 +27,11 @@ const HookForm = () => {
         <FieldDiv>
           <Input
             {...register("firstName", {
-              minLength: 3,
-              required: {
-                value: true,
-                message: "FirstName is required",
+              minLength: {
+                value: 3,
+                message: "min 3 characters",
               },
+              required: "FirstName is required",
             })}
           />
           <Label htmlFor="firstName">First Name </Label>
@@ -37,6 +41,7 @@ const HookForm = () => {
         <FieldDiv>
           <Input
             {...register("email", {
+              required: "E-mail is required",
               pattern: {
                 value: regexp,
                 message: "Invalid Email format",

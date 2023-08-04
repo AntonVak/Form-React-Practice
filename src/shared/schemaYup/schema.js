@@ -5,10 +5,11 @@ export const schema = yup
     firstName: yup.string().required("FirstName is required").min(3, "min 3 characters"),
     lastName: yup
       .string()
-      .min(3, "min 3 characters" )
+      .required("LastName is required")
+      .min(4, "min 4 characters" )
       .max(16, "max 16 characters")
       .matches("password is not valid")
-      .required("LastName is required")
+     
       
     // email: yup.string().required(),
     // age: yup.number().positive().integer().min(18).required,

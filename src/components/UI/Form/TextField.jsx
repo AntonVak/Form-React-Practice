@@ -4,11 +4,13 @@ import { FieldDiv, Input, Label } from "./TextFieldStyles";
 const TextField = ({ label, name, control, ...restProps }) => {
   const {
     field: { ref, onBlur, onChange, ...inputProps },
-    fieldState: { invalid, error },
+    fieldState: { invalid, error, isTouched },
     formState: { touchedFields, dirtyFields },
   } = useController({
     name,
     control,
+    
+    
   });
   return (
     <FieldDiv>
