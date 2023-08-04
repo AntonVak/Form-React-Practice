@@ -8,7 +8,7 @@ export const schema = yup
       .required("Last Name is required")
       .min(4, "min 4 characters" )
       .max(16, "max 16 characters")
-      .matches("password is not valid")
+      
      
       
     // email: yup.string().required(),
