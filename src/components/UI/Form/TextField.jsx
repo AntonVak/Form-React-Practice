@@ -22,8 +22,8 @@ const TextField = ({ label, name, control, ...restProps }) => {
       />
       <Label>{label}</Label>
       {invalid && <P>{error?.message}</P>}
-      {inputProps.value === "" && <span>This is empty</span>}
-      {error && error.type === "required" && <span>This is required</span>}
+      {/* {inputProps.value === "" && <span>This is empty</span>}
+      {error && error.type === "required" && <span>This is required</span>} */}
       
     </FieldDiv>
   );

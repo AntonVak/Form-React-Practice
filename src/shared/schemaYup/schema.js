@@ -7,13 +7,10 @@ export const schema = yup
       .string()
       .required("Last Name is required")
       .min(4, "min 4 characters" )
-      .max(16, "max 16 characters")
-      
-     
-      
-    // email: yup.string().required(),
-    // age: yup.number().positive().integer().min(18).required,
-    // password: yup.string().min(6).max(20).required(),
-    // confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
+      .max(16, "max 16 characters"),
+    email: yup.string().required(),
+    age: yup.number().required().positive().integer().min(18),
+    password: yup.string().required().min(6).max(20),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
   })
   .required();

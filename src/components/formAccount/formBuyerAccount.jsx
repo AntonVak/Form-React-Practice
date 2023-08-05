@@ -4,6 +4,7 @@ import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
 import { Pstyle } from "../hookForm/HookFormStyles";
+import RadioField from "../UI/Form/RadioField";
 
 const FormBuyerAccount = () => {
   const {
@@ -15,30 +16,43 @@ const FormBuyerAccount = () => {
     defaultValues: {
       firstName: "",
       lastName: "",
+      email: "",
+      age: "",
+      password: "",
+      confirmPassword: "",
+      radio: [],
     },
-    mode: 'onTouched',
+    mode: "onTouched",
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
     console.log(data);
     reset();
   };
-
+  const gender = ["Women", "Men", "Divided"];
   return (
     <FormWrap className="a">
       <h3 className="mb-4">Login</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField control={control} name="firstName" label="First Name" />
-        {/* <Pstyle>{errors.firstName?.message}</Pstyle> */}
-
         <TextField control={control} name="lastName" label="Last Name" />
-        {/* <p>{errors.lastName?.message}</p> */}
+        <TextField control={control} name="email" label="E-mail" />
+        <TextField control={control} name="age" label="Age" />
+        {/* <RadioField
+          control={control}
+          type="radio"
+          name="radio"
+          label="Men"
+          checked=""
+        /> */}
+        <RadioField control={control} options={["Women", "Men", "Divided"]} name="radio" type="radio"/>
 
-        {/* <TextField label="Email" {...register("email")} />
-
-        <TextField label="Age" {...register("age")} />
-        <TextField label="Password" {...register("password")} />
-        <TextField label="Confirm Password" {...register("confirmPassword")} /> */}
+        <TextField control={control} name="password" label="Password" />
+        <TextField
+          control={control}
+          name="confirmPassword"
+          label="Confirm Password"
+        />
 
         <button type="submit" className="btn btn-primary w-100 mx-auto">
           Submit
