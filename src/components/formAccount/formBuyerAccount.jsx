@@ -3,8 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
-import { Pstyle } from "../hookForm/HookFormStyles";
 import RadioField from "../UI/Form/RadioField";
+import { H1} from "./FormAccountStyle";
+
+let renderCount = 0;
 
 const FormBuyerAccount = () => {
   const {
@@ -30,9 +32,11 @@ const FormBuyerAccount = () => {
     reset();
   };
   const gender = ["Women", "Men", "Divided"];
+renderCount++;
+
   return (
     <FormWrap className="a">
-      <h3 className="mb-4">Login</h3>
+      <H1 className="mb-4"> Account ({renderCount / 2})</H1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
