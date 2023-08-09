@@ -4,7 +4,8 @@ import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
 import RadioField from "../UI/Form/RadioField";
-import { H1 } from "./FormAccountStyle";
+import { DivPhone, H1 } from "./FormAccountStyle";
+import ButtonPhone from "../UI/Buttons/ButtonPhone";
 
 let renderCount = 0;
 
@@ -13,6 +14,7 @@ const FormBuyerAccount = () => {
     handleSubmit,
     reset,
     control,
+    register,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -23,28 +25,23 @@ const FormBuyerAccount = () => {
       password: "",
       confirmPassword: "",
       radio: [],
-      phoneNumbers: ["", ""],
+      // phoneNumbers: ["",""],
       phNumbers: [{ number: "" }],
     },
     mode: "onTouched",
     resolver: yupResolver(schema),
   });
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, update } = useFieldArray({
     control,
     name: "phNumbers",
   });
+  console.log(fields);
+
   const onSubmit = (data) => {
-    console.log(data);
     reset();
   };
 
-  const onAddNumber = () => {
-    append()
-  }
-  const onRemoveNumber = () => {
-    remove()
-  }
-  const gender = ["Women", "Men", "Divided"];
+  // const gender = ["Women", "Men", "Divided"];
   renderCount++;
 
   return (
@@ -75,17 +72,35 @@ const FormBuyerAccount = () => {
           name="confirmPassword"
           label="Confirm Password"
         />
-        <div>
-          {fields.map((field, idx) => (
-            <TextField
-              key={field.id}
-              control={control}
-              name={`phNumbers.${idx}.number`}
-              label="Phone Number"
-            />
+        <>
+          {fields.map((field, index) => (
+            <DivPhone key={field.id}>
+              <TextField
+                control={control}
+                // update={update}
+                // index={index}
+                // value={field}
+                name={`phNumbers.${index}.number`}
+                label="Phone Number"
+              />
+              {/* <input type="text" {...register(`phNumbers.${index}.number`)} /> */}
+              {index > 0 && (
+                <ButtonPhone
+                  onClick={() => remove(index)}
+                  type="button"
+                ></ButtonPhone>
+              )}
+            </DivPhone>
           ))}
-          <button onClick={onAddNumber } type="submit">Add phoneNumbers</button>
-        </div>
+          <button
+            onClick={() => {
+              append();
+            }}
+            type="button"
+          >
+            Add phoneNumbers
+          </button>
+        </>
 
         <button type="submit" className="btn btn-primary w-100 mx-auto">
           Submit
