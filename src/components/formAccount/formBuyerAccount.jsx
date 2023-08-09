@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
 import RadioField from "../UI/Form/RadioField";
-import { H1} from "./FormAccountStyle";
+import { H1 } from "./FormAccountStyle";
 
 let renderCount = 0;
 
@@ -23,16 +23,29 @@ const FormBuyerAccount = () => {
       password: "",
       confirmPassword: "",
       radio: [],
+      phoneNumbers: ["", ""],
+      phNumbers: [{ number: "" }],
     },
     mode: "onTouched",
     resolver: yupResolver(schema),
+  });
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "phNumbers",
   });
   const onSubmit = (data) => {
     console.log(data);
     reset();
   };
+
+  const onAddNumber = () => {
+    append()
+  }
+  const onRemoveNumber = () => {
+    remove()
+  }
   const gender = ["Women", "Men", "Divided"];
-renderCount++;
+  renderCount++;
 
   return (
     <FormWrap className="a">
@@ -49,7 +62,12 @@ renderCount++;
           label="Men"
           checked=""
         /> */}
-        <RadioField control={control} options={["Women", "Men", "Divided"]} name="radio" type="radio"/>
+        <RadioField
+          control={control}
+          options={["Women", "Men", "Divided"]}
+          name="radio"
+          type="radio"
+        />
 
         <TextField control={control} name="password" label="Password" />
         <TextField
@@ -57,6 +75,17 @@ renderCount++;
           name="confirmPassword"
           label="Confirm Password"
         />
+        <div>
+          {fields.map((field, idx) => (
+            <TextField
+              key={field.id}
+              control={control}
+              name={`phNumbers.${idx}.number`}
+              label="Phone Number"
+            />
+          ))}
+          <button onClick={onAddNumber } type="submit">Add phoneNumbers</button>
+        </div>
 
         <button type="submit" className="btn btn-primary w-100 mx-auto">
           Submit
