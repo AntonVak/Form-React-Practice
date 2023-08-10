@@ -8,7 +8,7 @@ const Display = ({ control, index }) => {
     name: `phNumbers.${index}`,
   });
   console.log(data);
-  return <p>{data?.phNumbers}</p>;
+  
 };
 
 const NestedField = ({ update, index, value, control, label, name, ...restProps  }) => {
@@ -28,11 +28,11 @@ const NestedField = ({ update, index, value, control, label, name, ...restProps 
       <FieldDiv>
         <Input
           className="input"
-          // onBlur={onBlur}
-          // onChange={onChange}
-          // ref={ref}
+          onBlur={onBlur}
+          onChange={onChange}
+          ref={ref}
           // {...inputProps}
-          // {...restProps}
+          {...restProps}
           {...register(`phNumbers`)}
         />
         <Label>{label}</Label>

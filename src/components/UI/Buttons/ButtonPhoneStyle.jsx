@@ -1,51 +1,44 @@
 import styled from "@emotion/styled";
 
 export const BtnPhone = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgb(20, 20, 20);
-  border: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  appearance: none;
+  background-color: transparent;
+  border: 0.125em solid #1a1a1a;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: #3b3b3b;
   cursor: pointer;
-  transition-duration: 0.3s;
-  overflow: hidden;
-  position: relative;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 3.75em;
+  min-width: 0;
+  outline: none;
+  padding: 1em 2.3em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  &:disabled {
+    pointer-events: none;
+  }
   &:hover {
-    width: 140px;
-    border-radius: 50px;
-    transition-duration: 0.3s;
-    background-color: rgb(255, 69, 69);
-    align-items: center;
-    .svgIcon {
-      width: 50px;
-      transition-duration: 0.3s;
-      transform: translateY(60%);
-    }
-    &::before {
-      font-size: 13px;
-      opacity: 1;
-      transform: translateY(30px);
-      transition-duration: 0.3s;
-    }
+    color: #fff;
+    background-color: #1a1a1a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
   }
-  &::before {
-    position: absolute;
-    top: -20px;
-    content: "Delete";
-    color: white;
-    transition-duration: 0.3s;
-    font-size: 2px;
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(0);
   }
-  .svgIcon {
-    width: 12px;
-    transition-duration: 0.3s;
-    path {
-      fill: white;
-    }
-  }
+ 
 `;

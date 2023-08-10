@@ -19,7 +19,7 @@ const HookForm = () => {
     mode: "onTouched",
   });
   const { fields, remove, append, update } = useFieldArray({
-    name: "phNumbers",
+    name: "phoneNumbers",
     control,
   });
 
@@ -102,7 +102,7 @@ const HookForm = () => {
         <button
           type="button"
           onClick={() => {
-            append({ phNumbers: "" });
+            append({ phoneNumbers: "" });
           }}
         >
           append

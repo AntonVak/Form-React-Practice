@@ -5,14 +5,14 @@ import { useForm, useWatch } from "react-hook-form";
 const Display = ({ control, index }) => {
     const data = useWatch({
       control,
-      name: `phNumbers.${index}`
+      name: `phoneNumbers.${index}`
     });
-    console.log(data);
-    return <p>{data?.phNumbers}</p>;
+    return <p>{data?.phoneNumbers}</p>;
+   
   };
   
   const Edit = ({ update, index, value, control }) => {
-    const { register, handleSubmit } = useForm({
+    const { register } = useForm({
       defaultValues: value
     });
   
@@ -21,8 +21,8 @@ const Display = ({ control, index }) => {
         <Display control={control} index={index} />
         
         <input
-          placeholder="phNumbers"
-          {...register(`phNumbers`)}
+          
+          {...register(`phoneNumbers`)}
         />
   
        

@@ -12,7 +12,7 @@ const NestedForm = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: [],
+      firstName: "",
       // phNumbers: [],
       phNumbers: [{ number: "" }],
     },
@@ -30,9 +30,10 @@ const NestedForm = () => {
 
   return (
     <FormWrap>
+    <h1>Nested Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         {fields.map((field, index) => (
-          <div>
+          <div key={field.id}>
             <NestedField
               name="phNumbers"
               label="Phone number"
@@ -51,7 +52,7 @@ const NestedForm = () => {
         <button
           type="button"
           onClick={() => {
-            append({ phNumbers: ""}, { firstName: ""});
+            append({ phNumbers: "", firstName: ""});
           }}
         >
           append
