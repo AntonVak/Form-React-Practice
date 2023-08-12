@@ -1,7 +1,7 @@
 import { useController } from "react-hook-form";
 import { FieldDiv, Input, Label, P } from "./TextFieldStyles";
 
-const TextField = ({ label, name, control, ...restProps }) => {
+const TextField = ({ label, name, control, type, ...restProps }) => {
   const {
     field: { ref, onBlur, onChange, ...inputProps },
     fieldState: { invalid, error },
@@ -17,6 +17,7 @@ const TextField = ({ label, name, control, ...restProps }) => {
         onBlur={onBlur}
         onChange={onChange}
         ref={ref}
+        type={type}
         {...inputProps}
         {...restProps}
       />
@@ -24,7 +25,6 @@ const TextField = ({ label, name, control, ...restProps }) => {
       {invalid && <P>{error?.message}</P>}
       {/* {inputProps.value === "" && <span>This is empty</span>}
       {error && error.type === "required" && <span>This is required</span>} */}
-      
     </FieldDiv>
   );
 };

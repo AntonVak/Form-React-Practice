@@ -7,7 +7,8 @@ import RadioField from "../UI/Form/RadioField";
 import { DivPhone, H1 } from "./FormAccountStyle";
 import ButtonPhone from "../UI/Buttons/ButtonPhone";
 import PhoneAppendField from "../UI/Form/PhoneAppendField";
-import { BtnPhone } from "../UI/Buttons/ButtonPhoneStyle";
+import { BtnAddPhone, BtnPhone } from "../UI/Buttons/ButtonPhoneStyle";
+import ButtonAddPhone from "../UI/Buttons/ButtonAddPhone";
 
 let renderCount = 0;
 
@@ -28,6 +29,7 @@ const FormBuyerAccount = () => {
       confirmPassword: "",
       radio: [],
       phNumbers: [{ number: "" }],
+      dateBd: new Date(),
     },
     mode: "onTouched",
     resolver: yupResolver(schema),
@@ -36,7 +38,6 @@ const FormBuyerAccount = () => {
     control,
     name: "phNumbers",
   });
-  console.log(fields);
 
   const onSubmit = (data) => {
     reset();
@@ -49,10 +50,10 @@ const FormBuyerAccount = () => {
     <FormWrap className="a">
       <H1 className="mb-4"> Account ({renderCount / 2})</H1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* <TextField control={control} name="firstName" label="First Name" />
+        <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
         <TextField control={control} name="email" label="E-mail" />
-        <TextField control={control} name="age" label="Age" /> */}
+        <TextField control={control} name="age" label="Age" />
         {/* <RadioField
           control={control}
           type="radio"
@@ -81,32 +82,24 @@ const FormBuyerAccount = () => {
                 update={update}
                 index={index}
                 value={field}
-                // name={`phNumbers.${index}.number`}
+                type="number"
                 label={
                   index === 0 ? "Phone number" : `Phone number ${index + 1}`
                 }
               />
-              {index > 0 && (
-                <BtnPhone onClick={() => remove(index)}
-                  type="button">
-                  Del
-                </BtnPhone>
-              )}
+              {index > 0 && <ButtonPhone onClick={() => remove(index)} />}
             </DivPhone>
           ))}
-          <button
+          <ButtonAddPhone
             onClick={() => {
               append({ phNumbers: "" });
             }}
-            type="button"
-          >
-            Add phoneNumbers
-          </button>
+          />
         </>
-
-        <button type="submit" className="btn btn-primary w-100 mx-auto">
+        <TextField control={control} name="dateBd" label="Date of BD" type="date" />
+        <BtnAddPhone type="submit">
           Submit
-        </button>
+        </BtnAddPhone>
       </form>
     </FormWrap>
   );

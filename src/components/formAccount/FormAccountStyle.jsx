@@ -6,4 +6,5 @@ export const H1 = styled.h1`
 `;
 export const DivPhone = styled.div`
   display: flex;
+  
 `;
