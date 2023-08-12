@@ -11,7 +11,7 @@ const Display = ({ control, index }) => {
    
   };
   
-  const Edit = ({ update, index, value, control }) => {
+  const Edit = ({ update, index, value, control, type }) => {
     const { register } = useForm({
       defaultValues: value
     });
@@ -20,9 +20,11 @@ const Display = ({ control, index }) => {
       <div>
         <Display control={control} index={index} />
         
-        <input
+        <input type={type}
           
-          {...register(`phoneNumbers`)}
+          {...register(`phoneNumbers`, {
+            valueAsNumber: true
+          }) }
         />
   
        

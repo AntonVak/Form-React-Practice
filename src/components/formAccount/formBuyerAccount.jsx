@@ -17,7 +17,8 @@ const FormBuyerAccount = () => {
     handleSubmit,
     reset,
     control,
-    register,
+    // register,
+    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -42,6 +43,9 @@ const FormBuyerAccount = () => {
   const onSubmit = (data) => {
     reset();
   };
+  const handleGetValue = (params) => {
+    console.log("Get value", getValues(['firstName', 'age', "dateBd" ]));
+  }
 
   // const gender = ["Women", "Men", "Divided"];
   renderCount++;
@@ -53,7 +57,7 @@ const FormBuyerAccount = () => {
         <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
         <TextField control={control} name="email" label="E-mail" />
-        <TextField control={control} name="age" label="Age" />
+        <TextField control={control} name="age" label="Age" type="number"/>
         {/* <RadioField
           control={control}
           type="radio"
@@ -96,9 +100,12 @@ const FormBuyerAccount = () => {
             }}
           />
         </>
-        <TextField control={control} name="dateBd" label="Date of BD" type="date" />
+        <TextField control={control} name="dateBd" label="Date of BD" type="date" valueAsDate="true" />
         <BtnAddPhone type="submit">
           Submit
+        </BtnAddPhone>
+        <BtnAddPhone onClick={handleGetValue}>
+          Get Value
         </BtnAddPhone>
       </form>
     </FormWrap>

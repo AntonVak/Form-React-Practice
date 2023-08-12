@@ -1,5 +1,5 @@
-import { useController, useForm, useWatch } from "react-hook-form";
-import { FieldDiv, Input, Label, P } from "./PhoneAppendStyles";
+import {useForm, useWatch } from "react-hook-form";
+import { FieldDiv, Input, Label } from "./PhoneAppendStyles";
 
 const Display = ({ control, index }) => {
   const data = useWatch({
@@ -9,7 +9,7 @@ const Display = ({ control, index }) => {
   return <p>{data?.phNumbers}</p>;
 };
 
-const PhoneAppendField = ({ label, name, control, index, value }) => {
+const PhoneAppendField = ({ label, name, control, index, value, type }) => {
   const { register } = useForm({
     defaultValues: value,
   });
@@ -24,7 +24,9 @@ const PhoneAppendField = ({ label, name, control, index, value }) => {
     <>
       <Display control={control} index={index} />
       <FieldDiv>
-        <Input className="input" {...register(`phNumbers`)} />
+        <Input className="input" {...register(`phNumbers`,{
+          valueAsNumber: true,
+        })} type={type} />
         <Label className="user-label">{label}</Label>
         {/* {invalid && <P>{error?.message}</P>} */}
       </FieldDiv>

@@ -3,8 +3,9 @@ import { FieldDiv, Input, Label, P } from "./TextFieldStyles";
 
 const TextField = ({ label, name, control, type, ...restProps }) => {
   const {
-    field: { ref, onBlur, onChange, ...inputProps },
+    field: { ref, onBlur, onChange,  ...inputProps },
     fieldState: { invalid, error },
+    
   } = useController({
     name,
     control,
@@ -20,6 +21,7 @@ const TextField = ({ label, name, control, type, ...restProps }) => {
         type={type}
         {...inputProps}
         {...restProps}
+        
       />
       <Label>{label}</Label>
       {invalid && <P>{error?.message}</P>}

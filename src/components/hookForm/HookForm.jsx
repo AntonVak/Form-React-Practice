@@ -92,6 +92,7 @@ const HookForm = () => {
               update={update}
               index={index}
               value={field}
+              type="number"
             />
             <button type="button" onClick={() => remove(index)}>
               Remove
