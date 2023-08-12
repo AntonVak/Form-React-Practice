@@ -1,7 +1,7 @@
 import { BtnPhone } from "./ButtonPhoneStyle";
 
-const ButtonPhone = () => {
-  return <BtnPhone>Del</BtnPhone>;
+const ButtonPhone = ({onClick}) => {
+  return <BtnPhone onClick={onClick}>Del</BtnPhone>;
 };
 
 export default ButtonPhone;
