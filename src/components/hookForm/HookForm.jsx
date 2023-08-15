@@ -1,4 +1,5 @@
-import { useFieldArray, useForm } from "react-hook-form";
+import { TextField } from "@mui/material";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import Edit from "../UI/Form/EditField";
 import FormWrap from "../UI/FormWrap";
 import { FieldDiv, Input, Label, Pstyle } from "./HookFormStyles";
@@ -14,6 +15,8 @@ const HookForm = () => {
     defaultValues: {
       firstName: "",
       email: "",
+      uncontrolled: [],
+      select: {},
       // phNumbers: [{ value: "1" }, { value: "2" }],
     },
     mode: "onTouched",
@@ -59,30 +62,32 @@ const HookForm = () => {
           <Pstyle>{errors.email?.message}</Pstyle>
         </FieldDiv> */}
 
-        {/* <FieldDiv>
-          <Input
-            {...register("phNumbers")}
-          />
-          <Label>Phone Number</Label>
-        </FieldDiv>
-        <input type="submit" /> */}
+        <input {...register("radio")} type="radio" value="A"  label="111" />
+      <input {...register("radio")} type="radio" value="B" />
+      <input {...register("radio")} type="radio" value="C" />
+
+      <input type="radio" id="contactChoice3" name="contact" value="mail" />
+    <label >Mail</label>
+
+        <select {...register("gender")}>
+        <option value="female">female</option>
+        <option value="male">male</option>
+        <option value="other">other</option>
+      </select>
+
+        <section>
+        <h2>uncontrolled</h2>
+        <input {...register("uncontrolled")} type="checkbox" value="weqeq" />
+        <input {...register("uncontrolled")} type="checkbox" value="B" />
+        <input {...register("uncontrolled")} type="checkbox" value="C" />
+      </section>
         {/* ************************************************************** */}
-        {/* {fields.map((field, i) => (
-          <div>
-            <input key={field.id} {...register(`phNumbers.${i}.value`)} />
-            <button type="button" onClick={() => remove(i)}>
-              Remove
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={() =>
-            append({ value: "" }, { focusName: "phNumbers.0.value" })
-          }
-        >
-          append
-        </button> */}
+        {/* <Controller
+          render={({ field }) => <input {...field} />}
+          name="firstName"
+          control={control}
+          defaultValue=""
+        /> */}
         {/* ************************************************************** */}
         {fields.map((field, index) => (
           <div>

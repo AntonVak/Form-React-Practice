@@ -11,6 +11,7 @@ import { BtnAddPhone, BtnPhone } from "../UI/Buttons/ButtonPhoneStyle";
 import ButtonAddPhone from "../UI/Buttons/ButtonAddPhone";
 import Checkbox from '@mui/material/Checkbox';
 import { FormControlLabel } from "@mui/material";
+import CheckboxField from "../UI/Form/CheckboxField";
 
 let renderCount = 0;
 
@@ -33,6 +34,7 @@ const FormBuyerAccount = () => {
       radio: [],
       phNumbers: [{ number: "" }],
       dateBd: new Date(),
+      myCheckbox: false,
     },
     mode: "onTouched",
     resolver: yupResolver(schema),
@@ -60,21 +62,16 @@ const FormBuyerAccount = () => {
         <TextField control={control} name="lastName" label="Last Name" />
         <TextField control={control} name="email" label="E-mail" />
         <TextField control={control} name="age" label="Age" type="number"/>
-        {/* <RadioField
+        <RadioField
           control={control}
           type="radio"
           name="radio"
           label="Men"
           checked=""
-        /> */}
-        {/* <RadioField
-          control={control}
-          options={["Women", "Men", "Divided"]}
-          name="radio"
-          type="radio"
+          options={["a", "b", "c"]}
         />
-
-        <TextField control={control} name="password" label="Password" />
+       
+        {/* <TextField control={control} name="password" label="Password" />
         <TextField
           control={control}
           name="confirmPassword"
@@ -103,8 +100,7 @@ const FormBuyerAccount = () => {
           />
         </>
         <TextField control={control} name="dateBd" label="Date of BD" type="date" valueAsDate="true" />
-        <Checkbox  defaultChecked />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+       <CheckboxField/>
         <BtnAddPhone type="submit">
           Submit
         </BtnAddPhone>
