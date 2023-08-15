@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const FieldDiv = styled.div`
 position: relative;
 margin-bottom: 1.6rem;
+width: 100%;
 
 `;
 export const Input = styled.input`

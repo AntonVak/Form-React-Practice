@@ -15,7 +15,6 @@ export const BtnPhone = styled.button`
   /* min-height: 2.75em;
   min-width: 0; */
   outline: none;
-  margin-left: 1rem;
   padding: 0.7rem;
   text-align: center;
   text-decoration: none;
@@ -23,9 +22,11 @@ export const BtnPhone = styled.button`
 `;
 export const BtnAddPhone = styled(BtnPhone)`
 height: 20px;
-width: 100%;
+width: 50%;
 background-color: #1a73e8;
 color: white;
 padding: 0rem;
+margin-bottom: 1.6rem;
+
 
 `

@@ -8,3 +8,12 @@ export const DivPhone = styled.div`
   display: flex;
   
 `;
+export const Form = styled.form`
+
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  
+  align-items: center; */
+  
+`;

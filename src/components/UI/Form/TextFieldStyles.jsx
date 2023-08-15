@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const FieldDiv = styled.div`
 position: relative;
 margin-bottom: 1.6rem;
+width: 100%;
 
 `;
 export const Input = styled.input`
@@ -11,7 +12,9 @@ border-radius: 1rem;
 background: none;
 padding: .7rem;
 font-size: 1.3rem;
-width: 30rem;
+width: 100%;
+
+
 color: #636363;
 transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
   &:focus,
