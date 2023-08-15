@@ -4,11 +4,13 @@ import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { schema } from "../../shared/schemaYup/schema";
 import RadioField from "../UI/Form/RadioField";
-import { DivPhone, H1 } from "./FormAccountStyle";
+import { DivPhone, Form, H1 } from "./FormAccountStyle";
 import ButtonPhone from "../UI/Buttons/ButtonPhone";
 import PhoneAppendField from "../UI/Form/PhoneAppendField";
 import { BtnAddPhone, BtnPhone } from "../UI/Buttons/ButtonPhoneStyle";
 import ButtonAddPhone from "../UI/Buttons/ButtonAddPhone";
+import Checkbox from '@mui/material/Checkbox';
+import { FormControlLabel } from "@mui/material";
 
 let renderCount = 0;
 
@@ -52,8 +54,8 @@ const FormBuyerAccount = () => {
 
   return (
     <FormWrap className="a">
-      <H1 className="mb-4"> Account ({renderCount / 2})</H1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <H1> Account ({renderCount / 2})</H1>
+      <Form  onSubmit={handleSubmit(onSubmit)}>
         <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
         <TextField control={control} name="email" label="E-mail" />
@@ -101,13 +103,15 @@ const FormBuyerAccount = () => {
           />
         </>
         <TextField control={control} name="dateBd" label="Date of BD" type="date" valueAsDate="true" />
+        <Checkbox  defaultChecked />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
         <BtnAddPhone type="submit">
           Submit
         </BtnAddPhone>
         <BtnAddPhone onClick={handleGetValue}>
           Get Value
         </BtnAddPhone>
-      </form>
+      </Form>
     </FormWrap>
   );
 };
