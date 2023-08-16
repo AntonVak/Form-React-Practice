@@ -14,7 +14,7 @@ const RadioField = ({ label, type, name, options, control, ...restProps }) => {
         name
       });
       const [value, setValue] = useState(field.value || []);
-console.log(options);
+
   return (
     <RadioDiv >
      {options && options.map((option, index) => (

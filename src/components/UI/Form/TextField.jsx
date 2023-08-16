@@ -17,10 +17,10 @@ const TextField = ({ label, name, control, type, ...restProps }) => {
         className="input"
         onBlur={onBlur}
         onChange={onChange}
-        ref={ref}
+        // ref={ref}
         type={type}
-        {...inputProps}
-        {...restProps}
+        // {...inputProps}
+        // {...restProps}
         
       />
       <Label>{label}</Label>

@@ -13,8 +13,8 @@ const NestedForm = () => {
   } = useForm({
     defaultValues: {
       firstName: "",
-      // phNumbers: [],
-      phNumbers: [{ number: "" }],
+      checkBox: false,
+      
     },
     mode: "onTouched",
   });
@@ -32,31 +32,11 @@ const NestedForm = () => {
     <FormWrap>
     <h1>Nested Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {fields.map((field, index) => (
-          <div key={field.id}>
-            <NestedField
-              name="phNumbers"
-              label="Phone number"
-              key={field.id}
-              control={control}
-              update={update}
-              index={index}
-              value={field}
-            />
-            <button type="button" onClick={() => remove(index)}>
-              Remove
-            </button>
-          </div>
-        ))}
+       <NestedField  control={control}  name="checkBox" label="Confirm"/>
+       <NestedField  control={control}  name="checkBox" label="Confirm"/>
+       <NestedField  control={control}  name="checkBox" label="Confirm"/>
 
-        <button
-          type="button"
-          onClick={() => {
-            append({ phNumbers: "", firstName: ""});
-          }}
-        >
-          append
-        </button>
+        
       </form>
     </FormWrap>
   );

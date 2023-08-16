@@ -9,7 +9,7 @@ import ButtonPhone from "../UI/Buttons/ButtonPhone";
 import PhoneAppendField from "../UI/Form/PhoneAppendField";
 import { BtnAddPhone, BtnPhone } from "../UI/Buttons/ButtonPhoneStyle";
 import ButtonAddPhone from "../UI/Buttons/ButtonAddPhone";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 import { FormControlLabel } from "@mui/material";
 import CheckboxField from "../UI/Form/CheckboxField";
 
@@ -45,11 +45,13 @@ const FormBuyerAccount = () => {
   });
 
   const onSubmit = (data) => {
+    
     reset();
+    console.log(data);
   };
   const handleGetValue = (params) => {
-    console.log("Get value", getValues(['firstName', 'age', "dateBd" ]));
-  }
+    // console.log("Get value", getValues(['firstName', 'age', "dateBd" ]));
+  };
 
   // const gender = ["Women", "Men", "Divided"];
   renderCount++;
@@ -57,11 +59,11 @@ const FormBuyerAccount = () => {
   return (
     <FormWrap className="a">
       <H1> Account ({renderCount / 2})</H1>
-      <Form  onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
         <TextField control={control} name="email" label="E-mail" />
-        <TextField control={control} name="age" label="Age" type="number"/>
+        <TextField control={control} name="age" label="Age" type="number" />
         <RadioField
           control={control}
           type="radio"
@@ -70,7 +72,7 @@ const FormBuyerAccount = () => {
           checked=""
           options={["a", "b", "c"]}
         />
-       
+
         {/* <TextField control={control} name="password" label="Password" />
         <TextField
           control={control}
@@ -99,14 +101,16 @@ const FormBuyerAccount = () => {
             }}
           />
         </>
-        <TextField control={control} name="dateBd" label="Date of BD" type="date" valueAsDate="true" />
-       <CheckboxField/>
-        <BtnAddPhone type="submit">
-          Submit
-        </BtnAddPhone>
-        <BtnAddPhone onClick={handleGetValue}>
-          Get Value
-        </BtnAddPhone>
+        <TextField
+          control={control}
+          name="dateBd"
+          label="Date of BD"
+          type="date"
+          valueAsDate="true"
+        />
+        <CheckboxField control={control} name="myCheckbox" label="Confirm" />
+        <BtnAddPhone type="submit">Submit</BtnAddPhone>
+        <BtnAddPhone onClick={handleGetValue}>Get Value</BtnAddPhone>
       </Form>
     </FormWrap>
   );

@@ -1,22 +1,16 @@
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { useController, useForm, useWatch } from "react-hook-form";
 import { FieldDiv } from "../../nestedForm/NestedFormStyles";
 import { Input, Label } from "./TextFieldStyles";
 
-const Display = ({ control, index }) => {
-  const data = useWatch({
-    control,
-    name: `phNumbers.${index}`,
-  });
-  console.log(data);
+const NestedField = ({
+  control,
+  label,
+  name,
+}) => {
   
-};
-
-const NestedField = ({ update, index, value, control, label, name, ...restProps  }) => {
-  const { register} = useForm({
-    defaultValues: value,
-  });
   const {
-    field: { ref, onBlur, onChange, ...inputProps },
+    field: { ref, onBlur, onChange, checked },
   } = useController({
     name,
     control,
@@ -24,20 +18,18 @@ const NestedField = ({ update, index, value, control, label, name, ...restProps 
 
   return (
     <div>
-      <Display control={control} index={index} />
-      <FieldDiv>
-        <Input
-          className="input"
-          onBlur={onBlur}
-          onChange={onChange}
-          ref={ref}
-          // {...inputProps}
-          {...restProps}
-          {...register(`phNumbers`)}
-        />
-        <Label>{label}</Label>
-       
-      </FieldDiv>
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="success"
+            checked={checked}
+            onChange={onChange}
+            ref={ref}
+            inputProps={{ "aria-label": "controlled" }}
+          />
+        }
+        label={label}
+      />
     </div>
   );
 };
