@@ -18,7 +18,7 @@ export const schema = yup
     age: yup.number().required().positive().integer().min(18),
     password: yup.string().required().min(2).max(16),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-    myCheckbox: yup.boolean().oneOf([true], "Must agree to something"),
+    // myCheckbox: yup.boolean().oneOf([true], "Must agree to something"),
   })
   .required();
 

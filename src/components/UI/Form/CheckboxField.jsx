@@ -1,6 +1,5 @@
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import { useState } from "react";
 import { useController } from "react-hook-form";
 import { P } from "./TextFieldStyles";
 

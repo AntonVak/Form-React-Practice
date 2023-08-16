@@ -1,6 +1,7 @@
 import { useFieldArray, useForm } from "react-hook-form";
 import Edit from "../UI/Form/EditField";
 import NestedField from "../UI/Form/NestedField";
+import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
 import { FieldDiv, Input, Label, Pstyle } from "./NestedFormStyles";
 
@@ -25,6 +26,7 @@ const NestedForm = () => {
   });
 
   const onSubmit = (data) => {
+    console.log(data);
     reset();
   };
 
@@ -33,10 +35,9 @@ const NestedForm = () => {
     <h1>Nested Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
        <NestedField  control={control}  name="checkBox" label="Confirm"/>
-       <NestedField  control={control}  name="checkBox" label="Confirm"/>
-       <NestedField  control={control}  name="checkBox" label="Confirm"/>
+       <TextField control={control} name="firstName" label="First Name" />
 
-        
+        <button type="submit">Submit</button>
       </form>
     </FormWrap>
   );

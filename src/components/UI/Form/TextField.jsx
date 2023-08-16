@@ -1,7 +1,7 @@
 import { useController } from "react-hook-form";
 import { FieldDiv, Input, Label, P } from "./TextFieldStyles";
 
-const TextField = ({ label, name, control, type, ...restProps }) => {
+const TextField = ({ label, name, control, type }) => {
   const {
     field: { ref, onBlur, onChange,  ...inputProps },
     fieldState: { invalid, error },
@@ -17,7 +17,7 @@ const TextField = ({ label, name, control, type, ...restProps }) => {
         className="input"
         onBlur={onBlur}
         onChange={onChange}
-        // ref={ref}
+        ref={ref}
         type={type}
         // {...inputProps}
         // {...restProps}
