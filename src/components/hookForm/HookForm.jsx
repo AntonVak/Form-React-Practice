@@ -1,6 +1,7 @@
 import { TextField } from "@mui/material";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import Edit from "../UI/Form/EditField";
+import RadioHookField from "../UI/FormHookPg/RadioHookField";
 import FormWrap from "../UI/FormWrap";
 import { FieldDiv, Input, Label, Pstyle } from "./HookFormStyles";
 
@@ -17,6 +18,7 @@ const HookForm = () => {
       email: "",
       uncontrolled: [],
       select: {},
+      radio: {},
       // phNumbers: [{ value: "1" }, { value: "2" }],
     },
     mode: "onTouched",
@@ -113,9 +115,11 @@ const HookForm = () => {
         >
           append
         </button>
+
+        <RadioHookField control={control} name="radio"/>
+        
       </form>
     </FormWrap>
   );
 };
-
 export default HookForm;

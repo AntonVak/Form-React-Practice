@@ -6,7 +6,7 @@ import { RadioDiv } from "./RadioFieldStyles";
 
 
 
-const RadioField = ({ label, type, name, options, control, ...restProps }) => {
+const RadioField = ({ label, type, name, options, control }) => {
     const { 
         field
      } = useController({
