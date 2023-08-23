@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Form-React-Practice.git/static/css/main.8e006c54.css",
-    "main.js": "/Form-React-Practice.git/static/js/main.e0f74bda.js",
-    "index.html": "/Form-React-Practice.git/index.html",
-    "main.8e006c54.css.map": "/Form-React-Practice.git/static/css/main.8e006c54.css.map",
-    "main.e0f74bda.js.map": "/Form-React-Practice.git/static/js/main.e0f74bda.js.map"
+    "main.css": "/Form-React-Practice/static/css/main.8e006c54.css",
+    "main.js": "/Form-React-Practice/static/js/main.e0f74bda.js",
+    "index.html": "/Form-React-Practice/index.html",
+    "main.8e006c54.css.map": "/Form-React-Practice/static/css/main.8e006c54.css.map",
+    "main.e0f74bda.js.map": "/Form-React-Practice/static/js/main.e0f74bda.js.map"
   },
   "entrypoints": [
     "static/css/main.8e006c54.css",
