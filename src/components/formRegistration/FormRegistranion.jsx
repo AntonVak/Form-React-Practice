@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import FormWrap from "../UI/FormWrap";
+import { Box, TextField } from "@mui/material";
+import { StyledBox } from "./FormRegisStyles";
 
 const schema = yup
   .object({
@@ -35,6 +37,15 @@ const FormRegistration = () => {
 
         <input type="submit" />
       </form>
+      <StyledBox
+      
+       component="form"
+      
+      noValidate
+      autoComplete="off">
+     
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      </StyledBox>
     </FormWrap>
   );
 };
