@@ -2,7 +2,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import TextField from "../UI/Form/TextField";
 import FormWrap from "../UI/FormWrap";
-import { schema } from "../../shared/schemaYup/schema";
+import { userSchema } from "../../shared/schemaYup/schema";
 import RadioField from "../UI/Form/RadioField";
 import { DivPhone, Form, H1 } from "./FormAccountStyle";
 import ButtonPhone from "../UI/Buttons/ButtonPhone";
@@ -16,6 +16,7 @@ import CheckboxField from "../UI/Form/CheckboxField";
 let renderCount = 0;
 
 const FormBuyerAccount = () => {
+  
   const {
     handleSubmit,
     reset,
@@ -37,7 +38,7 @@ const FormBuyerAccount = () => {
       // myCheckbox: false,
     },
     mode: "onTouched",
-    resolver: yupResolver(schema),
+    resolver: yupResolver(userSchema),
   });
   const { fields, append, remove, update } = useFieldArray({
     control,

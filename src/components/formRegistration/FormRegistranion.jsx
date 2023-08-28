@@ -1,27 +1,40 @@
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import FormWrap from "../UI/FormWrap";
-import { Box, TextField } from "@mui/material";
 import { StyledBox } from "./FormRegisStyles";
+import TextField from "../UI/Form/TextField";
 
 const schema = yup
   .object({
-    firstName: yup.string().trim('must be not empty').min(3, 'must be at least 3 characters long').max(6).required(),
-    age: yup.number().positive().integer().min(18,'must be not empty').required(),
+    firstName: yup
+      .string()
+      .required()
+      .matches(/^([^0-9]*)$/, "No number!")
+      .trim("must be not empty")
+      .min(3, "must be at least 3 characters long")
+      .max(6),
+    lastName: yup
+      .string()
+      .required("Last Name is required")
+      .min(4, "min 4 characters")
+      .max(16, "max 16 characters"),
   })
   .required();
 
 const FormRegistration = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const navigate = useNavigate();
+
+  const handleStep2Click = () => {
+    navigate("/formregister/pg1", { replace: true });
+  };
+
+  const { control, handleSubmit } = useForm({
     defaultValues: {
-        firstName: "",
-        age: "",
-      },
+      firstName: "",
+    },
+    mode: "onTouched",
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => console.log(data);
@@ -29,23 +42,13 @@ const FormRegistration = () => {
   return (
     <FormWrap>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("firstName", {onblur: true})} />
-        <p>{errors.firstName?.message}</p>
+        <TextField control={control} name="firstName" label="First Name" />
+        <TextField control={control} name="lastName" label="Last Name" />
 
-        <input {...register("age")} />
-        <p>{errors.age?.message}</p>
-
-        <input type="submit" />
+        <button onClick={handleStep2Click} type="submit">
+          Step2
+        </button>
       </form>
-      <StyledBox
-      
-       component="form"
-      
-      noValidate
-      autoComplete="off">
-     
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      </StyledBox>
     </FormWrap>
   );
 };
