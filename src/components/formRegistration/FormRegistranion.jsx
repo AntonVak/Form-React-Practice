@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import FormWrap from "../UI/FormWrap";
 import { StyledBox } from "./FormRegisStyles";
 import TextField from "../UI/Form/TextField";
+import { useAuth } from "../../hooks/useAuth";
+import { updateAuthForm } from "../../store/auth/slice";
 
 const schema = yup
   .object({
@@ -25,19 +28,26 @@ const schema = yup
 
 const FormRegistration = () => {
   const navigate = useNavigate();
+  const dispatchFunc = useDispatch();
+  const userData = useAuth();
 
-  const handleStep2Click = () => {
-    navigate("/formregister/pg1", { replace: true });
-  };
+  // const handleStep2Click = () => {
+  //   navigate("/formregister/pg1", { replace: true });
+  // };
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      firstName: "",
+      firstName: userData.firstName,
     },
     mode: "onTouched",
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatchFunc(updateAuthForm(data));
+    navigate("/formregister/pg1", { replace: true });
+    console.log(data);
+    console.log(userData);
+  };
 
   return (
     <FormWrap>
@@ -45,9 +55,7 @@ const FormRegistration = () => {
         <TextField control={control} name="firstName" label="First Name" />
         <TextField control={control} name="lastName" label="Last Name" />
 
-        <button onClick={handleStep2Click} type="submit">
-          Step2
-        </button>
+        <button type="submit">Next</button>
       </form>
     </FormWrap>
   );
